@@ -1,0 +1,133 @@
+<html>
+    <head><title>Idle Mine: Reincarnated</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <link href='https://fonts.googleapis.com/css?family=Work Sans' rel='stylesheet'>
+
+    </head>
+
+    <body onload="loaded()" style="background-color: rgb(255, 255, 255);">
+        <div class="bodydiv" id="game-container">
+            <div id="whole-object"> <div id="the-object"> <button onclick="mine_click()" id="object" style="background-color: white;"></button> </div>
+            <div id="ore-info">
+            <font id="mine-name">Sand?</font> <br>
+            <div id="hpbar1"> <div id="hpbar2"></div> </div>
+            <font id="mine-hp">4/10 HP</font> <br>
+            <font id="mine-def">3.44e723 DEF </font> <br>
+            <font id="mine-reward">>0.01$</font> <br><br>
+            <font id="mine-number"></font> <br>
+            <font id="mine-stage">Stage 1/10</font> <br>
+            <button onclick="previouslevel()" id="changeobj1" style="background-color: white;"> <img id="buttonpic" src="otherpics/arrow2.svg"> </button>
+            <button onclick="nextlevel()" id="changeobj2" style="background-color: white;"> <img id="buttonpic" src="otherpics/arrow1.svg"> </button> <br>
+            <button onclick="previousstage()" id="changeobj3" style="background-color: white;"> <img id="buttonpic" src="otherpics/arrow2.svg"> </button>
+            <button onclick="nextstage()" id="changeobj4" style="background-color: white;"> <img id="buttonpic" src="otherpics/arrow1.svg"> </button> </div> </div>
+
+            <div id="pickaxe-stats"> <font id="pickaxe-stats-title">Pickaxe stats</font> <br><br> <font id="pickaxe-stats-dmg">Base dmg: 22</font> <br> <font id="pickaxe-stats-quality">Quality: 100%</font> <br> <font id="pickaxe-stats-enchance">Enchancenment: 100%</font> <br> <font id="pickaxe-stats-upg8">'Mega clicker': x555</font> <br> <font id="pickaxe-stats-def">Defence: 2</font> <br> <font id="pickaxe-stats-final">Final damage: 34</font> <br> <br> <font id="pickaxe-stats-auto">Auto damage: none lol</font> </div>
+            <div id="upgrade-subtabs"> <button id="upg-subtab1"> <img id="buttonpic2" src="otherpics/money.svg"> Money upgrades</button> <button id="upg-subtab2"> <img id="buttonpic2" src="otherpics/gem.svg"> Gem upgrades</button> <button id="upg-subtab3"> <img id="buttonpic2" src="otherpics/collapse.svg"> Planet upgrades</button> </div>
+            <div id="money-upgrades"> <button onmouseenter="selectupg(1)" onclick="U1()" id="money-upg1"> <img id="buttonpic" src="otherpics/upg1.svg"> </button> <button onmouseenter="selectupg(2)" onclick="U2()" id="money-upg2"> <img id="buttonpic" src="otherpics/upg2.svg"> </button> <button onmouseenter="selectupg(3)" onclick="U3()" id="money-upg3"> <font id="U3lvl"></font> <img id="buttonpic" src="otherpics/upg3.svg"> </button> <button onmouseenter="selectupg(4)" onclick="U4()" id="money-upg4"> <font id="U4lvl"></font> <img id="buttonpic" src="otherpics/upg4.svg"> </button> <button onmouseenter="selectupg(5)" onclick="U5()" id="money-upg5"> <img id="buttonpic" id="buttonpic" src="otherpics/upg5.svg"> </button>
+            <button onmouseenter="selectupg(6)" onclick="U6()" id="money-upg6"> <font id="U6lvl"></font> <img id="buttonpic" src="otherpics/upg6.svg"> </button>  <button onmouseenter="selectupg(7)" onclick="U7()" id="money-upg7"> <img id="buttonpic" src="otherpics/upg7.svg"> </button> <button onmouseenter="selectupg(8)" onclick="U8()" id="money-upg8"> <img id="buttonpic" src="otherpics/upg8.svg"> </button> <button onmouseenter="selectupg(9)" onclick="U9()" id="money-upg9"> <font id="U9lvl"></font> <img id="buttonpic" src="otherpics/upg9.svg"> </button> <button onmouseenter="selectupg(10)" onclick="U10()" id="money-upg10"> <img id="buttonpic" src="otherpics/upg10.svg"> </button> </div>
+            <div id="upgrade-info"> <font id="upgrade-info-text">Upgrade info</font> <br> <font id="upgrade-price-text"></font> </div>
+            <div style="font-weight: bold;" id="event-log"></div>
+            <div id="changewasterdiv"> <button onclick="previouswasterlvl()" id="changewaster1" style="background-color: white;"> <img id="buttonpic" src="otherpics/arrow2.svg"> </button>   <button onclick="createpic()" id="create-pic">Create a pickaxe for <font id="createpicprice">1</font><img id="buttonpic3" src="otherpics/gem.svg"> <br> <font style="font-size: 20px;" id="createpicench"></font> <br> <font style="font-size: 20px;" id="createpicmindmg"></font> </button>   <button onclick="nextwasterlvl()" id="changewaster2" style="background-color: white;"> <img id="buttonpic" src="otherpics/arrow1.svg"> </button> </div>
+
+            <header id="top-panel"> <font id="game-name">Idle Mine: Reincarnated</font> <font id="money">60 dola</font> <div> <font id="gems"> no gems? </font><img src="otherpics/gem.svg"> </div> </header>
+            <footer id="bottom-panel"> <button onclick="changemenu(1)" class="menus"><img id="buttonpic2" src="otherpics/pickaxe.svg"> Ore mining</button> <button id="factorytab" style="display: none;" onclick="changemenu(2)" class="menus"> <img id="buttonpic2" src="otherpics/factory.svg"> Factory</button> <button style="display: none;" onclick="changemenu(3)" class="menus"> <img id="buttonpic2" src="otherpics/collapse.svg"> Collapse</button> <button onclick="changemenu(4)" class="menus"> <img id="buttonpic2" src="otherpics/achievements.svg"> Achievements</button> <button onclick="changemenu(5)" class="menus"> <img id="buttonpic2" src="otherpics/other.svg"> Other</button> <button onclick="changemenu(6)" class="menus"> <img id="buttonpic2" src="otherpics/help.svg"> Help</button> </footer>
+
+            <div id="factorydiv">
+                <div id="factoryvisual"><img src="otherpics/factory.svg"></div>
+                <div class="smoke-container"></div>
+                <div id="factoryinfo">
+                    <center> <font style="font-size: 30px; font-weight: bold;" id="factorylvl"></font> <br>
+                    <div id="xpbar1"> <div id="xpbar2"></div> </div>
+                    <font style="font-weight: bold;" id="factoryxp"></font> <br><br>
+                    <font id="factoryeff1"></font> <br>
+                    <font id="factoryeff2"></font> <br>
+                    <font id="factoryeff3"></font> </center>
+                </div>
+                <div id="minersdiv">
+                    <button onclick="miner1()" id="miner"><img style="height: 100%;" src="otherpics/worker1.svg"> <font style="position: absolute; left: 15%; top: 5%; font-weight: bold;" id="miner1info1"></font><font style="position: absolute; top: 50%; left: 15%;" id="miner1info2"></font></button> <br>
+                    <button onclick="miner2()" id="miner"><img style="height: 100%;" src="otherpics/worker2.svg"> <font style="position: absolute; left: 15%; top: 5%; font-weight: bold;" id="miner2info1"></font><font style="position: absolute; top: 50%; left: 15%;" id="miner2info2"></font></button> <br>
+                    <button onclick="miner3()" id="miner"><img style="height: 100%;" src="otherpics/worker3.svg"> <font style="position: absolute; left: 15%; top: 5%; font-weight: bold;" id="miner3info1"></font><font style="position: absolute; top: 50%; left: 15%;" id="miner3info2"></font></button> <br>
+                    <button onclick="miner4()" id="miner"><img style="height: 100%;" src="otherpics/worker4.svg"> <font style="position: absolute; left: 15%; top: 5%; font-weight: bold;" id="miner4info1"></font><font style="position: absolute; top: 50%; left: 15%;" id="miner4info2"></font></button> <br>
+                </div>
+            </div>
+
+
+            <div id="options">
+                <font style="font-size: 40px; font-weight: bold;">Settings</font> <br>
+                <input type="checkbox" id="auto1" name="autothing1" value="Stage">
+                <label style="font-size: 30px;" for="auto1"> Auto stage progress</label> <br>
+                <input type="checkbox" id="auto2" name="autothing2" value="Ore">
+                <label style="font-size: 30px;" for="auto2"> Auto ore progress</label> <br>
+                <input type="checkbox" id="auto3" name="autothing3" value="Ore #">
+                <label style="font-size: 30px;" for="auto3"> Show ore number</label> <br>
+                <input type="file" id="fileInput" /> <br>
+                <button onclick="importGame()" style="background-color: lightgray; border-width: 3px; border-color: black; font-size: 25px; width: 200px; height: 50px;">Import</button>
+                <button onclick="exportGame()" style="background-color: lightgray; border-width: 3px; border-color: black; font-size: 25px; width: 200px; height: 50px;">Export</button>
+                <button onclick="saveGame()" style="background-color: lightgray; border-width: 3px; border-color: black; font-size: 25px; width: 200px; height: 50px;">Manual save</button>
+                <button onclick="hardReset()" style="background-color: rgb(255, 88, 88); border-width: 3px; border-color: rgb(168, 0, 0); font-size: 25px; width: 200px; height: 50px;">Hard reset</button> <br><br>
+                <div class="dropdown">
+                    <button class="notationbtn" id="notation"></button>
+                    <div class="dropdown-notation">
+                      <a onclick="changenotation(1)">Mixed scientific</a>
+                      <a onclick="changenotation(2)">Engineering</a>
+                      <a onclick="changenotation(3)">Logarithm</a>
+                      <a onclick="changenotation(4)">Double logarithm</a>
+                      <a onclick="changenotation(5)">Scientific</a>
+                      <a onclick="changenotation(6)">Alemaninc Ordinal</a>
+                      <a onclick="changenotation(7)">Tetration</a>
+                      <a onclick="changenotation(8)">Strange</a>
+                    </div> <br>
+                <font style="font-size: 25px; font-weight: bold;">This game was inspired by Idle Mine(couldn't find the link) and </font> <a style="font-size: 25px; font-weight: bold;" href="https://veprogames.github.io/idle-mine-remix/">Idle Mine: Remix</a> <br>
+                    <font style="font-size: 25px; font-weight: bold;">This game also uses </font> <a style="font-size: 25px; font-weight: bold;" href="https://veprogames.github.io/idle-mine-remix/">infOP</a> <font style="font-size: 25px; font-weight: bold;"> by Alemaninc</font> <br><br><br><br>
+                    <font style="font-size: 40px; font-weight: bold;">Export your save regularly, there might be an update anytime!</font>
+            </div>
+        </div>
+        <div id="achievements-div">
+            <font style="font-size: 35px; font-weight: bold;">Achievements</font>
+            <div id="achievements">
+                <div onmouseenter="ach(1)" id="ach1" id="achievement"> <img style="width: 10vh; height: 10vh; border-style: outset; border-color: black; border-width: 3px;" src="otherpics/money.svg"> </div>
+                <div onmouseenter="ach(2)" id="ach2" id="achievement"> <img style="width: 10vh; height: 10vh; border-style: outset; border-color: black; border-width: 3px;" src="otherpics/pickaxe.svg"> </div>
+                <div onmouseenter="ach(3)" id="ach3" id="achievement"> <img style="width: 10vh; height: 10vh; border-style: outset; border-color: black; border-width: 3px;" src="ores/object11.svg"> </div>
+                <div onmouseenter="ach(4)" id="ach4" id="achievement"> <img style="width: 10vh; height: 10vh; border-style: outset; border-color: black; border-width: 3px;" src="otherpics/money.svg"> </div>
+                <div onmouseenter="ach(5)" id="ach5" id="achievement"> <img style="width: 10vh; height: 10vh; border-style: outset; border-color: black; border-width: 3px;" src="otherpics/upg3.svg"> </div>
+                <div onmouseenter="ach(6)" id="ach6" id="achievement"> <img style="width: 10vh; height: 10vh; border-style: outset; border-color: black; border-width: 3px;" src="otherpics/money.svg"> </div>
+                <div onmouseenter="ach(7)" id="ach7" id="achievement"> <img style="width: 10vh; height: 10vh; border-style: outset; border-color: black; border-width: 3px;" src="otherpics/upg9.svg"> </div>
+            </div> <br>
+            <div id="achievements2">
+                <div onmouseenter="ach(8)" id="ach8" id="achievement" class="achtooltip"> <img style="width: 10vh; height: 10vh; border-style: outset; border-color: black; border-width: 3px;" src="otherpics/factory.svg"> </div>
+                <div onmouseenter="ach(9)" id="ach9" id="achievement" class="achtooltip"> <img style="width: 10vh; height: 10vh; border-style: outset; border-color: black; border-width: 3px;" src="otherpics/worker2.svg"> </div>
+                <div onmouseenter="ach(10)" id="ach10" id="achievement" class="achtooltip"> <img style="width: 10vh; height: 10vh; border-style: outset; border-color: black; border-width: 3px;" src="ores/object43.svg"> </div>
+                <div onmouseenter="ach(11)" id="ach11" id="achievement" class="achtooltip"> <img style="width: 10vh; height: 10vh; border-style: outset; border-color: black; border-width: 3px;" src="otherpics/pickaxe.svg"> </div>
+                <div onmouseenter="ach(12)" id="ach12" id="achievement" class="achtooltip"> <img style="width: 10vh; height: 10vh; border-style: outset; border-color: black; border-width: 3px;" src="ores/object56.svg"> </div>
+            </div> <br>
+            <div id="achinfodiv" style="background-color: lightgray;">
+            <font id="achname" style="font-size: 30px; font-weight: bold;"></font> <br>
+            <font id="achdesc" style="font-size: 25px;"></font> </div>
+        </div>
+
+        <div id="help-div">
+            <div id="help-box1" id="help-box">
+                <img src="ores/object0.svg" style="width:3%;"> <font id="help-title">Introduction</font> <br>
+                <font id="help-desc">Welcome to Idle mIne:Reincarnated! This is a remix of the original game Idle Mine aswell as a remix of Idle Mine:Remix! This game is not complete, but updates are on their way! Get started by clicking the big ore on the left of the screen.</font>
+            </div> <br>
+            <div id="help-box2" id="help-box">
+                <img src="otherpics/pickaxe.svg"> <font id="help-title">Pickaxe creating</font> <br>
+                <font id="help-desc">Upon breaking any ore, there is a 5% (can be increased) chance to get a gem. Using those gems you can create better pickaxes. However, there is no guarentee that the new pickaxe will be better than the previous one.</font>
+            </div> <br>
+            <div id="help-box3" id="help-box">
+                <img src="otherpics/upg3.svg"  style="width:3%;"> <font id="help-title">Enchancenments</font> <br>
+                <font id="help-desc">After creating a dud, ou get a potential enchancenment, that will be transferred onto your pickaxe when you do create a worthy one. Each enchancenment gives a 20% (compouding) boost to your damage.</font>
+            </div> <br>
+            <div id="help-box4" id="help-box">
+                <img src="otherpics/factory.svg"  style="width:3%;"> <font id="help-title">Factory & Miners</font> <br>
+                <font id="help-desc">The factory is simple. The first miner generates XP, eventually leveling up your factory, giving you boosts. The second miner generates the first miner at 0.01x speed. The third one generates the second one, etc.</font>
+            </div> <br>
+            <div id="help-box5" id="help-box">
+                <img src="ores/object56.svg"  style="width:3%;"> <font id="help-title">The end</font> <br>
+                <font id="help-desc">Congrats, you won! How long did it take you? If you want to, report bugs and suggestions to Piter#0427!</font>
+            </div>
+        </div>
+    </body>
+    <script src="main.js"></script>
+</html> 
